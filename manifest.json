@@ -4787,6 +4787,9 @@
     }
   },
   "files": {
+    ".RData": {
+      "checksum": "89fcbee603e1469f6bb0e1e090b972fc"
+    },
     "app.R": {
       "checksum": "3e51dcba448aebd5865af2ffa3148730"
     },
