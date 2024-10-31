@@ -77,6 +77,7 @@ ui <- fluidPage(
              fluidRow(
                
                column(7, 
+                      p(),
                       h2(strong('1. Leistung')),
                       h5("Tomaten, Zwischentyp, Rispe, Absatzweg regionaler Lebensmitteleinzelhandel, Lebensmitteleinzelhandel"),
                       
@@ -263,7 +264,7 @@ ui <- fluidPage(
                       
                ), # close left column
                column(5, 
-                    
+                        p(),
                         h3( strong('Ergebnisse')),
                         h5("The Net Present Value (NPV)"),
                         plotOutput("distPlot1",height = "250px",
