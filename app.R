@@ -112,7 +112,7 @@ ui <- fluidPage(
                         
                         h4(strong('2. 1. Direktkosten')),
                         sliderInput("Jungpflanzen_Menge",
-                                    "<b>Jungpflanzen (Pflanzen/ha):</b>",
+                                    HTML("<b>Jungpflanzen (Pflanzen/ha):</b>"),
                                     min = 20000,
                                     max = 40000,
                                     value = c(28000, 29000),
