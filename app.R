@@ -55,11 +55,8 @@ ui <- fluidPage(
     # tabPanel("Seedling",h1("Tomatenjungepflanzeproduktion")
     # ),
     
-<<<<<<< HEAD
-    tabPanel("Tomato", h3("Monte Carlo simulations für ein Tomatoproduktionsystem"),
-=======
+
     tabPanel("Tomato", h1("Tomatenproduktion"),
->>>>>>> dc35f3d8bc995cc5e5197a0da29694863155d73f
              fluidRow(
                textInput("Datum", "Datum"),
                textInput("Betrieb", "Betrieb (optional)"),
