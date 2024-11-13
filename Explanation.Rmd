@@ -1,0 +1,25 @@
+---
+title: "Shiny_HortiPrimed"
+author: "Sang Hyo Moon"
+date: "2024-11-06"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Fig.1 Probabilistic outcome distributions from Monte Carlo simulation for baseline and intervention.
+'The graph above provides a visual comparison of the outcome distributions for the baseline and intervention options in terms of net present value(NPV in €/ha) over the simulated period. The x-axis represents the NPV, calculated as the sum of discounted cash flows for each simulation year.
+ The y-axis shows the probability of occurrence, indicating the likelihood of different NPV values. A higher value on the y-axis corresponds to a greater probability of the associated NPV on the x-axis.'
+ 
+Fig. 2 Probabilistic outcome of the decision in terms of NPV over the simulation period.
+'The graph above illustrates the outcome in terms of NPV in €/ha over
+        the simulated years, comparing the baseline scenario with the intervention.
+        It highlights the differences in net cash flows between the two optioons.
+        The right-skewness of the graph suggests that the intervention is generally
+        favorable. However, since the distribution includes both positive and
+        negative values, there remains a non-zero probability that the intervention
+        may not always yield a more favorable outcome than the baseline. The
+        integrated box plot shows that while the interquartile range (IQR) is mostly positive,
+        it does include some negative values. The vertical line within the box plot represents the median NPV.'

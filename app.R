@@ -47,7 +47,7 @@ ui <- fluidPage(
     "))
   ),
   # Application title
-  titlePanel("Monte Carlo simulations 'HortiPrimed'"),
+  titlePanel("Optimal Priming"),
   theme = bs_theme(version = 5, bootswatch = "minty"), 
   tabsetPanel(               
     # tabPanel("Tab 1", h1("First tab"),
@@ -55,7 +55,7 @@ ui <- fluidPage(
     # tabPanel("Seedling",h1("Tomatenjungepflanzeproduktion")
     # ),
     
-    tabPanel("Tomato", h1("Tomatoproduktion"),
+    tabPanel("Tomato", h3("Monte Carlo simulations für ein Tomatoproduktionsystem"),
              fluidRow(
                textInput("Datum", "Datum"),
                textInput("Betrieb", "Betrieb (optional)"),
