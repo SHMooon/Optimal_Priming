@@ -193,19 +193,19 @@ ui <- fluidPage(
                             textInput("Heizmaterial_1", 
                                       "Welche Heizmaterial benutzen Sie für Ihre Tomaten produktion?"),
                             sliderInput("Energie_therm",
-                                        "Heizmaterial (€/m²)",
+                                        "Thermische Energie (€/m²)",
                                         min = 1,
                                         max = 20,
                                         value = c(4,8.5),
                                         step = 0.5),
                             sliderInput("Energie_elek",
-                                        "Strom(€/m²)",
+                                        "Elektrische Energie (€/m²)",
                                         min = 1,
                                         max = 10,
                                         value = c(1.5,3.5),
                                         step = 0.5),
                             sliderInput("CO2_H2O_Due",
-                                        "C02, Wasser, und Düngung flussiß(€/m²)",
+                                        "CO₂-, Wasser- und Düngemittelfluss(€/m²)",
                                         min = 0.1,
                                         max = 5,
                                         value =  c(1.5,2.1),
@@ -217,7 +217,7 @@ ui <- fluidPage(
                                         value =  c(0.55,0.95),
                                         step=0.05),
                             sliderInput("Hummel_Nutzlinge",
-                                        "Hummel + Nutzlingen (€/m²)",
+                                        "Hummel und Nutzlingen (€/m²)",
                                         min = 0.01,
                                         max = 1,
                                         value =  c(0.05,0.1),
@@ -229,7 +229,7 @@ ui <- fluidPage(
                                         value =  c(0.25,0.35),
                                         step=0.01),
                             sliderInput("Heackseln_Entsorgung",
-                                        "Häckseln + Entsorgung (€/m²)",
+                                        "Häckseln und Entsorgung (€/m²)",
                                         min = 0.01,
                                         max = 2,
                                         value =  c(0.3, 0.45 ),
@@ -268,7 +268,7 @@ ui <- fluidPage(
                                         step=0.5),
                             h4(strong('sonstige Variable')),
                             sliderInput("n_years_c",
-                                        "Produktionszeit horizon (years)",
+                                        "Produktionszeitraum (Jahre)",
                                         min = 1,
                                         max = 10,
                                         value =  5,
@@ -460,12 +460,12 @@ server <- function(input, output) {
     #Ausgabe
     #Direkt Kosten & Arbeitskosten
     Kosten_1 <- a_Saatgut + a_Jungepflanzen + 
-      Substrat + Energie_therm + Energie_elek + CO2_H2O_Due + Kordel +
+      Substrat + Daempfen+ Energie_therm + Energie_elek + CO2_H2O_Due + Kordel +
       Hummel_Nutzlinge + PSM_chem + Heackseln_Entsorgung + Desinfektion +
       Versicherung + Arbeit_all + Arbeit_pf + Arbeit_ernte
     
     Kosten_2<- b_Saatgut + b_Jungepflanzen + 
-      Substrat + Energie_therm + Energie_elek + CO2_H2O_Due + Kordel +
+      Substrat + Daempfen + Energie_therm + Energie_elek + CO2_H2O_Due + Kordel +
       Hummel_Nutzlinge + PSM_chem + Heackseln_Entsorgung + Desinfektion +
       Versicherung + Arbeit_all + Arbeit_pf + Arbeit_ernte
     
