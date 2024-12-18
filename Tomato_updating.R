@@ -76,7 +76,7 @@ ui <- fluidPage(
         fluidRow(column(width = 2,
                         align = "right",
                         tags$a(href = "https://www.hortisustain.de/projekte/boel/hortiprimed", # Add URL here
-                               tags$img(src = "Logo/hortiprimed_logo.png", height = "90px"))),
+                          tags$img(src = "Logo/hortiprimed_logo.png", height = "90px"))),
                  column(width = 7,
                         align = "center",
                         h2(class = "app-title",
@@ -91,10 +91,10 @@ ui <- fluidPage(
   ),
   #theme = bs_theme(version = 5, bootswatch = "minty"), 
   tabsetPanel(               
-    
+
     #first tabPanel ####
-    tabPanel("Tomato", h1("MonteCarlo Simulation mit zwei verschiedenen Tomatensorten"),class= "tabPanel",
-             fluidRow(
+    tabPanel("Tomato", h1("Sweetelle"),class= "tabPanel",
+            fluidRow(
                column(width =4,textInput("Datum_1", "Datum")),
                column(width =4,textInput("Betrieb_1", "Betrieb (optional)")),
                column(width =4,textInput("name_1", "Name (optional)"))
@@ -170,10 +170,10 @@ ui <- fluidPage(
                                         value = c(2.5, 4.5),
                                         step = 0.1)
                )),
-             fluidRow(
-               
+            fluidRow(
+              
                sidebarPanel(width = 6,
-                            style = "height: 150vh; overflow-y: auto;", #height in % 
+                            style = "height: 200vh; overflow-y: auto;", #height in % 
                             
                             h3(strong('2. Kosten')),
                             h4(strong('2.1. Direktkosten')),
@@ -274,63 +274,63 @@ ui <- fluidPage(
                                         value =  5,
                                         step=1)
                ),
-               column(width = 6, align = "left",
-                      mainPanel(width = 11,
-                                fluidRow( h3( strong('Ergebnisse')),
-                                          h4("1. Kapitalwert (Net Present Value)"),
-                                          plotOutput("distPlot1",height = "350px",
-                                                     width = "110%"),
-                                          p(),
-                                          p ("Der NPV (Kapitalwert) gibt die „Häufigkeit“ 
+              column(width = 6, align = "left",
+                 mainPanel(width = 11,
+                              fluidRow( h3( strong('Ergebnisse')),
+                                        h4("1. Kapitalwert (Net Present Value)"),
+                                        plotOutput("distPlot1",height = "350px",
+                                                   width = "110%"),
+                                        p(),
+                                        p ("Der NPV (Kapitalwert) gibt die „Häufigkeit“ 
                                            an, dass jedes Ergebnis der Verteilung realisiert wurde, 
                                            als das Modell simuliert wurde."),
-                                          # h5("2.Title"),
-                                          # plotOutput("distPlot2",height = "250px",
-                                          #            width = "95%"),
-                                          # p("explanation"),
-                                          p(),
-                                          p(),
-                                          h4("3. Cashflow"),
-                                          plotOutput("distPlot3",height = "300px",
-                                                     width = "110%"),
-                                          p(),
-                                          p("Der Cashflow ist eine Reihe von Geldbeträgen, d
+                                        # h5("2.Title"),
+                                        # plotOutput("distPlot2",height = "250px",
+                                        #            width = "95%"),
+                                        # p("explanation"),
+                                        p(),
+                                        p(),
+                                        h4("3. Cashflow"),
+                                        plotOutput("distPlot3",height = "300px",
+                                                   width = "110%"),
+                                        p(),
+                                        p("Der Cashflow ist eine Reihe von Geldbeträgen, d
                           ie entweder negativ (z. B. anfängliche Investitionskosten von 
                           Maßnahmen) oder positiv (z. B. zusätzlicher Umsatz, der durch 
                           Maßnahmen in einem bestimmten Jahr erzielt wird) über einen 
                           bestimmten Zeitraum sind.
                           In der Abbildung wird die Unsicherheit 
                           des Cashflows durch Quantile um den Median herum dargestellt."),
-                                          tableOutput("cashflow_means")
-                                ))
-                      
-                      
-               )),
-             fluidRow(
-               sidebarPanel(width = 12,
-                            fluidRow( h3( strong('Sonstiges')),
-                                      textAreaInput(width = "100%", 
-                                                    height ='100px',
-                                                    "Verbesserung_1", 
-                                                    "Gibt es noch fehlende Variable? Was könnte es in diesem Simulationsmodel verbessert werden?")),
-                            fluidRow(align = "left",
-                                     
-                                     #save & download file####
-                                     # Single button for saving and downloading
-                                     h5( strong('Bitte laden Sie Ihre Datei herunter.')),      
-                                     downloadButton('saveDownload', 'Download'))
-               )),
-             fluidRow(column(width = 2,
-             ),
-             column(width = 7,  # Center alignment logic with empty space between logos
-                    align = "center",
-                    ""
-             ),      
-             column( width = 3,
-                     align = "right",
-                     tags$a(tags$img(src = "Logo/fund.png", height = "90px"))
-             ))
-             
+                                        tableOutput("cashflow_means")
+                              ))
+
+
+             )),
+            fluidRow(
+              sidebarPanel(width = 12,
+                           fluidRow( h3( strong('Sonstiges')),
+                                     textAreaInput(width = "100%", 
+                                                   height ='100px',
+                                                   "Verbesserung_1", 
+                                                   "Gibt es noch fehlende Variable? Was könnte es in diesem Simulationsmodel verbessert werden?")),
+                           fluidRow(align = "left",
+                                    
+                                    #save & download file####
+                                    # Single button for saving and downloading
+                                    h5( strong('Please save and download your file')),      
+                                    downloadButton('saveDownload', 'Download'))
+              )),
+            fluidRow(column(width = 2,
+            ),
+            column(width = 7,  # Center alignment logic with empty space between logos
+                   align = "center",
+                   ""
+            ),      
+            column( width = 3,
+                    align = "right",
+                    tags$a(tags$img(src = "Logo/fund.png", height = "90px"))
+            ))
+            
     ),
     #SidePanel closed
     
@@ -342,7 +342,7 @@ ui <- fluidPage(
                tableOutput("simple_table")
              )
              
-    )#finish second tabPanel
+             )#finish second tabPanel
     
     
   ))#fluidPage & Tabpanel close
@@ -408,7 +408,7 @@ server <- function(input, output) {
       }
     })
     
-    
+
     
     
     # Create a data frame from the results
@@ -419,7 +419,7 @@ server <- function(input, output) {
       distribution = distributions, 
       stringsAsFactors = FALSE)
     
-    
+ 
   })
   
   # Define the additional_variables data frame
@@ -435,16 +435,16 @@ server <- function(input, output) {
     combined <- rbind(input_estimates(), additional_variables)
     row.names(combined) <- NULL
     combined
-    
-  })
-  
-  
+      
+    })
+   
+ 
   
   
   Tomato_function <- function(x, varnames){
+   
     
-    
-    #Leistung
+     #Leistung
     Yield_1 <- vv(a_Ertrag, var_CV_Yield, n_years_c)
     Yield_2 <- vv(b_Ertrag, var_CV_Yield, n_years_c)
     
@@ -547,140 +547,140 @@ server <- function(input, output) {
       base_size = 16
     )
   })
+ 
   
-  
-  
-  
-  
-  ### Render the plots using the reactive expressions
-  output$distPlot1 <- renderPlot({
-    plot1()
-  })
-  output$distPlot2 <- renderPlot({
-    plot2()
-  })
-  output$distPlot3 <- renderPlot({
-    plot3()
-  })
-  
-  ### Helper function to create download handlers
-  createDownloadHandler <- function(plot_reactive, filename_prefix) {
-    downloadHandler(
-      filename = function() {
-        paste(filename_prefix, input$project_name, format( Sys.Date(), "%Y-%m-%d"), ".png", sep = "")
-      },
-      content = function(file) {
-        ggsave(file, plot = plot_reactive(), device = "png")
+
+      
+      
+      ### Render the plots using the reactive expressions
+      output$distPlot1 <- renderPlot({
+        plot1()
+      })
+      output$distPlot2 <- renderPlot({
+        plot2()
+      })
+      output$distPlot3 <- renderPlot({
+        plot3()
+      })
+      
+      ### Helper function to create download handlers
+      createDownloadHandler <- function(plot_reactive, filename_prefix) {
+        downloadHandler(
+          filename = function() {
+            paste(filename_prefix, input$project_name, format( Sys.Date(), "%Y-%m-%d"), ".png", sep = "")
+          },
+          content = function(file) {
+            ggsave(file, plot = plot_reactive(), device = "png")
+          }
+        )
       }
-    )
-  }
-  
-  
-  ### Create download handlers for each plot
-  output$save_plot1 <- createDownloadHandler(plot1, "Plot_comparison_outcome-")
-  
-  # Display data frame 
-  # Basic table output
-  output$simple_table <- renderTable({
-    input_estimates_table()
-  })
-  
-  # Calculate the mean for each Cashflow column
-  cashflow_means <- reactive({
-    data <- tomato_simulation()
-    
-    # Use `sapply` to compute the mean for each column
-    means <- sapply(data$y[, grepl("^Cashflow", names(data$y))], mean)
-    
-    
-    # Convert to a data frame for display
-    data.frame("Cashflow" = names(means), Mean = round(means, 2))
-  })
-  
-  # Render the table of means in the UI
-  output$cashflow_means <- renderTable({
-    cashflow_means()
-  })
-  
-  
-  #Create a data save and download option ####
-  
-  input_estimates_table <- reactive({
-    
-    # variables: input ID
-    variables <- names(input)
-    
-    
-    lower_values <- sapply(variables, function(var) {
-      value <- input[[var]]
-      
-      # Apply logic based on the slider ranges
-      if (length(value) == 1) {
-        as.numeric(value)
-      } else if (grepl("_t$", var)) {  # Check if variable name ends with "_t"
-        as.numeric(value[1])  / 100  # Special logic for sliders with names ending in "_t"
-      } else if (grepl("_1$", var)) {
-        NULL  # Default behavior
-      } else {
-        as.numeric(value[1])   # Default behavior
-      }
-    })
-    
-    
-    upper_values <- sapply(variables, function(var) {
-      value <- input[[var]]
-      
-      # Apply logic based on the slider ranges
-      if (length(value) == 1) {
-        as.numeric(value)
-      } else if (grepl("_t$", var)) {  # Check if variable name ends with "_t"
-        as.numeric(value[2]) / 100  # Special logic for sliders with names ending in "_t"
-      } else if (grepl("_1$", var)) {
-        NULL   # Default behavior
-      }else {
-        as.numeric(value[2])  # Default behavior
-      }
-    })
-    
-    # distributions    
-    distributions <- sapply(variables, function(var) {
-      value <- input[[var]]
-      
-      if (grepl("_t$", var)) {
-        "tnorm_0_1"  # Special logic for variables ending with "_t"
-      } else if (grepl("_c$", var)) {  # Check if variable name ends with "_t"
-        "const"  # Special logic for sliders with names ending in "_t"
-      } else if (grepl("_1$", var)) {
-        as.character(value)   # Default behavior
-      } else {
-        "posnorm"  # Default behavior
-      }
-    })
-    
-    
-    
-    # Create a data frame from the results
-    data.frame(
-      variable = variables,
-      lower = lower_values, 
-      upper = upper_values, 
-      distribution = distributions, 
-      stringsAsFactors = FALSE)
-  })
-  
-  
-  output$saveDownload <- downloadHandler(            # Create the download file name
-    filename = function() {
-      paste("data-", Sys.Date(), ".csv", sep="")
-    },
-    content = function(file) {
       
       
-      #Display the output in the table
-      output$table <- renderTable(input_estimates_table())
-      write.csv(input_estimates_table(), file)                   # put Data() into the download file
-    })                          
-  
+      ### Create download handlers for each plot
+      output$save_plot1 <- createDownloadHandler(plot1, "Plot_comparison_outcome-")
+      
+      # Display data frame 
+      # Basic table output
+      output$simple_table <- renderTable({
+        input_estimates_table()
+      })
+      
+      # Calculate the mean for each Cashflow column
+      cashflow_means <- reactive({
+        data <- tomato_simulation()
+        
+        # Use `sapply` to compute the mean for each column
+        means <- sapply(data$y[, grepl("^Cashflow", names(data$y))], mean)
+        
+      
+        # Convert to a data frame for display
+        data.frame("Cashflow" = names(means), Mean = round(means, 2))
+      })
+      
+      # Render the table of means in the UI
+      output$cashflow_means <- renderTable({
+        cashflow_means()
+      })
+
+      
+      #Create a data save and download option ####
+      
+      input_estimates_table <- reactive({
+        
+        # variables: input ID
+        variables <- names(input)
+        
+        
+        lower_values <- sapply(variables, function(var) {
+          value <- input[[var]]
+          
+          # Apply logic based on the slider ranges
+          if (length(value) == 1) {
+            as.numeric(value)
+          } else if (grepl("_t$", var)) {  # Check if variable name ends with "_t"
+            as.numeric(value[1])  / 100  # Special logic for sliders with names ending in "_t"
+          } else if (grepl("_1$", var)) {
+            NULL  # Default behavior
+          } else {
+            as.numeric(value[1])   # Default behavior
+          }
+        })
+        
+        
+        upper_values <- sapply(variables, function(var) {
+          value <- input[[var]]
+          
+          # Apply logic based on the slider ranges
+          if (length(value) == 1) {
+            as.numeric(value)
+          } else if (grepl("_t$", var)) {  # Check if variable name ends with "_t"
+            as.numeric(value[2]) / 100  # Special logic for sliders with names ending in "_t"
+          } else if (grepl("_1$", var)) {
+            NULL   # Default behavior
+          }else {
+            as.numeric(value[2])  # Default behavior
+          }
+        })
+        
+        # distributions    
+        distributions <- sapply(variables, function(var) {
+          value <- input[[var]]
+          
+          if (grepl("_t$", var)) {
+            "tnorm_0_1"  # Special logic for variables ending with "_t"
+          } else if (grepl("_c$", var)) {  # Check if variable name ends with "_t"
+            "const"  # Special logic for sliders with names ending in "_t"
+          } else if (grepl("_1$", var)) {
+            as.character(value)   # Default behavior
+          } else {
+            "posnorm"  # Default behavior
+          }
+        })
+        
+        
+        
+        # Create a data frame from the results
+        data.frame(
+          variable = variables,
+          lower = lower_values, 
+          upper = upper_values, 
+          distribution = distributions, 
+          stringsAsFactors = FALSE)
+      })
+      
+      
+      output$saveDownload <- downloadHandler(            # Create the download file name
+        filename = function() {
+          paste("data-", Sys.Date(), ".csv", sep="")
+        },
+        content = function(file) {
+          
+          
+          #Display the output in the table
+          output$table <- renderTable(input_estimates_table())
+          write.csv(input_estimates_table(), file)                   # put Data() into the download file
+        })                          
+      
   
 }
 
