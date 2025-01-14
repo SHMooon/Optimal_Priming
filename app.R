@@ -600,7 +600,7 @@ server <- function(input, output) {
   
   output$save_table3 <- downloadHandler(            # Create the download file name
     filename = function() {
-      paste("Cashflow-", Sys.Date(), ".xlsx", sep="")
+      paste("Cashflow_table-", Sys.Date(), ".xlsx", sep="")
     },
     content = function(file) {
       
