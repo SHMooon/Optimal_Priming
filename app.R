@@ -20,6 +20,7 @@ library(shiny)
 library(bslib)
 library(shinythemes)
 library(ggplot2)
+library(writexl)
 
 
 # Define UI for application that draws a histogram
@@ -173,23 +174,18 @@ ui <- fluidPage(
              fluidRow(
                
                sidebarPanel(width = 6,
-                            style = "height: 130vh; overflow-y: auto;", #height in % 
+                            style = "height: 155vh; overflow-y: auto;", #height in % 
                             
                             h3(strong('2. Kosten')),
                             h4(strong('2.1. Direktkosten')),
                             
                             sliderInput("Substrat",
-                                        "Substrat (€/m²)",
+                                        "Substrat (€/m²): Falls Substrate gedämpft werden, 
+                                        geben Sie bitte die Substratkosten und Dampfkosten zusammen an.",
                                         min = 3,
                                         max = 15,
                                         value = c(5,8),
                                         step = 1),
-                            sliderInput("Daempfen",
-                                        "Dämpfen der Substraten (€/m²)",
-                                        min = 1,
-                                        max = 6,
-                                        value = c(2.5,3.5),
-                                        step = 0.1),
                             textInput("Heizmaterial_1", 
                                       "Welche Heizmaterial benutzen Sie für Ihre Tomaten produktion?"),
                             sliderInput("Energie_therm",
@@ -280,28 +276,25 @@ ui <- fluidPage(
                                           h4("1. Kapitalwert (Net Present Value)"),
                                           plotOutput("distPlot1",height = "350px",
                                                      width = "105%"),
-                                          p(),
-                                          p ("Der NPV (Kapitalwert) gibt die „Häufigkeit“ 
-                                           an, dass jedes Ergebnis der Verteilung realisiert wurde, 
-                                           als das Modell simuliert wurde."),
-                                          # h5("2.Title"),
-                                          # plotOutput("distPlot2",height = "250px",
-                                          #            width = "95%"),
-                                          # p("explanation"),
-                                          p(),
-                                          p(),
+                                          p ("Der NPV (Kapitalwert) zeigt die Häufigkeit, mit der jedes Ergebnis der Verteilung 
+                                             während der Modellsimulation aufgetreten ist"),
+                                          downloadButton("save_plot1", "Save Plot"),
+                                          br(),
+                                          br(),
                                           h4("2. Cashflow"),
                                           plotOutput("distPlot3",height = "300px",
                                                      width = "105%"),
                                           p(),
-                                          p("Der Cashflow ist eine Reihe von Geldbeträgen in €/m², d
-                          ie entweder negativ (z. B. anfängliche Investitionskosten von 
-                          Maßnahmen) oder positiv (z. B. zusätzlicher Umsatz, der durch 
-                          Maßnahmen in einem bestimmten Jahr erzielt wird) über einen 
-                          bestimmten Zeitraum sind.
-                          In der Abbildung wird die Unsicherheit 
-                          des Cashflows durch Quantile um den Median herum dargestellt."),
-                                          tableOutput("cashflow_means")
+                                          p("Der Cashflow ist eine Reihe von Geldbeträgen in €/m², die über einen bestimmten Zeitraum 
+                                          entweder negativ oder positiv ausfallen können. Der Cashflow wird als positiv betrachtet, 
+                                          wenn die erste Sorte einen höheren Umsatz erzielt als die zweite. Ein negativer Cashflow 
+                                          zeigt das Gegenteil. In der Abbildung wird die Unsicherheit des Cashflows durch Quantile um 
+                                          den Median herum visualisiert."),
+                                          downloadButton("save_plot3", "Save Plot"),
+                                          br(),
+                                          br(),
+                                          tableOutput("cashflow_means"),
+                                          downloadButton("save_table3", "Save table"),
                                 ))
                       
                       
@@ -460,12 +453,12 @@ server <- function(input, output) {
     #Ausgabe
     #Direkt Kosten & Arbeitskosten
     Kosten_1 <- a_Saatgut + a_Jungepflanzen + 
-      Substrat + Daempfen+ Energie_therm + Energie_elek + CO2_H2O_Due + Kordel +
+      Substrat + Energie_therm + Energie_elek + CO2_H2O_Due + Kordel +
       Hummel_Nutzlinge + PSM_chem + Heackseln_Entsorgung + Desinfektion +
       Versicherung + Arbeit_all + Arbeit_pf + Arbeit_ernte
     
     Kosten_2<- b_Saatgut + b_Jungepflanzen + 
-      Substrat + Daempfen + Energie_therm + Energie_elek + CO2_H2O_Due + Kordel +
+      Substrat + Energie_therm + Energie_elek + CO2_H2O_Due + Kordel +
       Hummel_Nutzlinge + PSM_chem + Heackseln_Entsorgung + Desinfektion +
       Versicherung + Arbeit_all + Arbeit_pf + Arbeit_ernte
     
@@ -577,8 +570,11 @@ server <- function(input, output) {
   
   
   ### Create download handlers for each plot
-  output$save_plot1 <- createDownloadHandler(plot1, "Plot_comparison_outcome-")
+  output$save_plot1 <- createDownloadHandler(plot1, "Plot_comparison_outcome")
+  output$save_plot2 <- createDownloadHandler(plot2, "Plot_comparison_outcome")
+  output$save_plot3 <- createDownloadHandler(plot3, "Plot_Cashflow")
   
+
   # Display data frame 
   # Basic table output
   output$simple_table <- renderTable({
@@ -601,6 +597,18 @@ server <- function(input, output) {
   output$cashflow_means <- renderTable({
     cashflow_means()
   })
+  
+  output$save_table3 <- downloadHandler(            # Create the download file name
+    filename = function() {
+      paste("Cashflow-", Sys.Date(), ".xlsx", sep="")
+    },
+    content = function(file) {
+      
+      
+      #Display the output in the table
+      output$table <- renderTable(cashflow_means())
+      write_xlsx(cashflow_means(), file)                   # put Data() into the download file
+    }) 
   
   
   #Create a data save and download option ####
@@ -668,6 +676,12 @@ server <- function(input, output) {
       stringsAsFactors = FALSE)
   })
   
+  
+  # Display data frame 
+  # Basic table output
+  output$simple_table <- renderTable({
+    input_estimates_table()
+  })
   
   output$saveDownload <- downloadHandler(            # Create the download file name
     filename = function() {
