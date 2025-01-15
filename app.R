@@ -114,7 +114,7 @@ ui <- fluidPage(
              fluidRow(
                sidebarPanel(width = 6, 
                             
-                            h3(strong('Sorte 1')),
+                            h3(strong('Sorte A')),
                             textInput("1_Sorte_1", 
                                       "Welche Tomatensorte ist das?"),
                             sliderInput("a_Ertrag",
@@ -143,7 +143,7 @@ ui <- fluidPage(
                                         step = 0.1)
                ),
                sidebarPanel(width = 6,
-                            h3(strong('Sorte 2')),
+                            h3(strong('Sorte B')),
                             textInput("2_Sorte_1", 
                                       "Welche Tomatensorte ist das?"),
                             sliderInput("b_Ertrag",
@@ -273,6 +273,8 @@ ui <- fluidPage(
                column(width = 6, align = "left",
                       mainPanel(width = 11,
                                 fluidRow( h3( strong('Ergebnisse')),
+                                          p('Diese Ergebnisse kommen aus 10.000 Simulationen mit Ihren gegebenen Daten.'),
+                                          br(),
                                           h4("1. Kapitalwert (Net Present Value)"),
                                           plotOutput("distPlot1",height = "350px",
                                                      width = "105%"),
