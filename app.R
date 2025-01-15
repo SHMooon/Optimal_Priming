@@ -104,10 +104,10 @@ ui <- fluidPage(
                sidebarPanel(width = 12,
                             fluidRow( h3( strong('Anwendung des Models')),
                                       h4 (HTML("<b>1.</b> Bitte geben Sie Ihre geschätzten Kennzahlen ein.")),
-                                      h4 (HTML("<b>2.</b> Klicken Sie auf <b>'Download'</b>, damit Ihre Ergebnisse als 
-                                               CSV-Datei auf Ihrem Computer oder Laptop heruntergeladen werden..")),
+                                      h4 (HTML("<b>2.</b> Klicken Sie auf <b>'Download'</b>, damit Ihre Ergebnisse als CSV-Datei 
+                                               auf Ihrem Computer oder Laptop heruntergeladen werden.")),
                                       h4 (HTML("<b>3.</b> Bitte senden Sie Ihre CSV-Datei an <b>'s62smoon@uni-bonn.de'</b>. 
-                                          Bei Fragen wenden Sie sich bitte an die genannte E-Mail-Adresse."))
+                                               Bei Fragen wenden Sie sich bitte an die genannte E-Mail-Adresse."))
                                       
                             ))),
              
