@@ -103,7 +103,7 @@ ui <- fluidPage(
              fluidRow(
                sidebarPanel(width = 12,
                             fluidRow( h3( strong('Anwendung des Models')),
-                                      h4 (HTML("<b>1.</b> Bitte geben Sie Ihre geschätzten Kennzahlen ein.")),
+                                      h4 (HTML("<b>1.</b> Bitte geben Sie Ihre geschätzten und <b>Jährlichen</b> Kennzahlen ein.")),
                                       h4 (HTML("<b>2.</b> Klicken Sie auf <b>'Download'</b>, damit Ihre Ergebnisse als CSV-Datei 
                                                auf Ihrem Computer oder Laptop heruntergeladen werden.")),
                                       h4 (HTML("<b>3.</b> Bitte senden Sie Ihre CSV-Datei an <b>'s62smoon@uni-bonn.de'</b>. 
@@ -263,6 +263,13 @@ ui <- fluidPage(
                                         value =  c(10,20),
                                         step=0.5),
                             h4(strong('sonstige Variable')),
+                            sliderInput("Kapitaldienst",
+                                        "Kapitaldienst (€/m²)",
+                                        min = 1,
+                                        max = 50,
+                                        value =  c(10,15),
+                                        step=1),
+                            
                             sliderInput("n_years_c",
                                         "Produktionszeitraum (Jahre)",
                                         min = 1,
@@ -296,6 +303,8 @@ ui <- fluidPage(
                                           br(),
                                           br(),
                                           tableOutput("cashflow_means"),
+                                          p("Die Tabelle zeigt den durchschnittlichen Cashflow [€/m²] pro Jahr, z. B. „Cashflow 1“ 
+                                            für das 1. Jahr, „Cashflow 2“ für die Jahre 1 bis 2 usw."),
                                           downloadButton("save_table3", "Save table"),
                                 ))
                       
@@ -457,12 +466,12 @@ server <- function(input, output) {
     Kosten_1 <- a_Saatgut + a_Jungepflanzen + 
       Substrat + Energie_therm + Energie_elek + CO2_H2O_Due + Kordel +
       Hummel_Nutzlinge + PSM_chem + Heackseln_Entsorgung + Desinfektion +
-      Versicherung + Arbeit_all + Arbeit_pf + Arbeit_ernte
+      Versicherung + Arbeit_all + Arbeit_pf + Arbeit_ernte + Kapitaldienst
     
     Kosten_2<- b_Saatgut + b_Jungepflanzen + 
       Substrat + Energie_therm + Energie_elek + CO2_H2O_Due + Kordel +
       Hummel_Nutzlinge + PSM_chem + Heackseln_Entsorgung + Desinfektion +
-      Versicherung + Arbeit_all + Arbeit_pf + Arbeit_ernte
+      Versicherung + Arbeit_all + Arbeit_pf + Arbeit_ernte + Kapitaldienst
     
     
     ## Total_ Gewinn_Kosten ##
