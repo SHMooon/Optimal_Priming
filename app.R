@@ -80,7 +80,7 @@ ui <- fluidPage(
                                tags$img(src = "Logo/hortiprimed_logo.png", height = "90px"))),
                  column(width = 7,
                         align = "center",
-                        h2(class = "app-title",
+                        h1(class = "app-title",
                            "Optimal Priming")),
                  column(width = 3,
                         align = "left",
@@ -94,7 +94,7 @@ ui <- fluidPage(
   tabsetPanel(               
     
     #first tabPanel ####
-    tabPanel("Tomato", h1("MonteCarlo Simulation mit zwei verschiedenen Tomatensorten"),class= "tabPanel",
+    tabPanel("Tomato", h2("MonteCarlo Simulation mit zwei verschiedenen Tomatensorten"),class= "tabPanel",
              fluidRow(
                column(width =4,textInput("Datum_1", "Datum")),
                column(width =4,textInput("Betrieb_1", "Betrieb (optional)")),
@@ -102,7 +102,15 @@ ui <- fluidPage(
              ),
              fluidRow(
                sidebarPanel(width = 12,
-                            fluidRow( h3( strong('Anwendung des Models')),
+                            fluidRow( h3( strong('Was ist Optimal Priming?')),
+                                h5(HTML("Die interaktive App Optimal Priming ermöglicht es Tomatenlandwirten, 
+                                die wirtschaftliche Leistungsfähigkeit zweier Tomatensorten unter Unsicherheit zu bewerten.")),
+                                h5(HTML("Durch eigene Betriebsdaten und 10.000 Monte-Carlo-Simulationen erhalten Nutzer 
+                                individuelle Ergebnisse für Kapitalwert (NPV) und Cashflow.")),
+                                h5(HTML("Die App wurde im Rahmen des HortiPrimed-Projekts entwickelt, das vom Bundesministerium für 
+                                Landwirtschaft und Ernährung (BMEL) gefördert wird.Sie unterstützt sowohl Landwirte bei der Entscheidungsfindung 
+                                als auch Forschende bei dee Bewertung der finanziellen Tragfähigkeit von Innovationen.")),
+                              h3( strong('Anwendung des Models')),
                                       h4 (HTML("<b>1.</b> Bitte geben Sie Ihre geschätzten und <b>Jährlichen</b> Kennzahlen ein.")),
                                       h4 (HTML("<b>2.</b> Klicken Sie auf <b>'Download'</b>, damit Ihre Ergebnisse als CSV-Datei 
                                                auf Ihrem Computer oder Laptop heruntergeladen werden.")),
