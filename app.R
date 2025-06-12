@@ -290,11 +290,14 @@ ui <- fluidPage(
                                 fluidRow( h3( strong('Ergebnisse')),
                                           p('Diese Ergebnisse kommen aus 10.000 Simulationen mit Ihren gegebenen Daten.'),
                                           br(),
-                                          h4("1. Kapitalwert (Net Present Value)"),
+                                          h4("1. Verteilung des Kapitalwerts (NPVe)"),
                                           plotOutput("distPlot1",height = "350px",
                                                      width = "105%"),
-                                          p ("Der NPV (Kapitalwert) zeigt die Häufigkeit, mit der jedes Ergebnis der Verteilung 
-                                             während der Modellsimulation aufgetreten ist"),
+                                          p ("Die Grafik zeigt die Verteilung des Kapitalwerts (NPV), die in 10.000 Modellsimulationen beobachtet wurde. 
+                                             Die Kurve stellt die geschätzte Wahrscheinlichkeitsdichte verschiedener Kapitalwerte dar und zeigt 
+                                             die relative Wahrscheinlichkeit jedes Ergebnisses an. Unsere Entscheidungsanalyse liefert diese 
+                                             probabilistische Kapitalwertverteilung sowie prognostizierte jährliche Cashflows. Der Kapitalwert selbst 
+                                             repräsentiert die diskontierte Saldo aus dem Barwert der erwarteten Einzahlungen und Auszahlungen."),
                                           downloadButton("save_plot1", "Save Plot"),
                                           br(),
                                           br(),
